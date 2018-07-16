@@ -1,53 +1,19 @@
-{% extends 'blog/base.html' %}
-
-{% block content %}
-{% for post in posts %}
-    <div class="post">
-        <div class="date">
-            {{ post.published_date }}
-        </div>
-        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
-{% endblock %}
-
-
-
-<!--- <!DOCTYPE HTML>
+{% load static %}
 <html>
-   <head>
-      <title>Bikelewa's blog</title>
-      <link rel="stylesheet" type="text/css" href="style.css">
-    
-    <style>
+    <head>
       
-      div{
-
-        background-color: purple;
-        width: 1000px;
-        height: 550px;
-        border: 20px;
-        padding: 20px;
-
-      }
-      button{
-            width: 150px;
-            height: 50px;
-            background-color: green; 
-            padding: 5px;
-      }
-      
-       button:hover {
-        background-color: orange;
-       }
-
-      
-           
-    </style>
-</head>
-       <body>
-        <div>
+      <title>Welcome to Bikelewa's blog</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
+        
+    </head>
+    <body>
+    <div class="page-header">
+        <h1><a href="/">Bikelewa's make-over blog</a></h1>
+    </div>
+    <div>
         <form>
            <input type="text" placeholder="write your Fullname here" name="Name">
            <button>Submit!</button>
@@ -149,8 +115,13 @@
             
           </form>
          </div>      
-       </body>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
     </div>
-     
+</body>
 </html>
-
